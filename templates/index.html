@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Your Honeypot{% endblock %}
+{% block content %}
+	<div>
+		<h2>Stats</h2>
+		<!-- Format: Statistics engine written by Andrew Waite - www.infosanity.co.uk -->
+		<pre>
+		Number of submissions: {{ submissions_count }}
+		Number of unique samples: {{ samples_count }}
+		Number of unique source IPs: {{ ip_count }}
+
+		First sample seen: {{ first_sample_date }}
+		Last sample seen: {{ last_sample_date }}
+		System Uptime: {{ uptime }}
+
+		Most recent submissions:
+			{% for sub in submissions %}
+				{{ sub['date'] }}, {{ sub['ip'] }}, {{ sub['name'] }}
+			{% endfor %}
+		</pre>
+	</div>
+{% endblock %}
